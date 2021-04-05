@@ -24,6 +24,7 @@ Beau Larkin
         `summarize()`](#verbs-group_by-and-summarize)
 -   [Combine verbs for EDA (exploratory data
     analysis)](#combine-verbs-for-eda-exploratory-data-analysis)
+-   [Wrapping up](#wrapping-up)
 -   [Homework](#homework)
     -   [Transform a messy data frame into a tidy
         tibble](#transform-a-messy-data-frame-into-a-tidy-tibble)
@@ -122,25 +123,25 @@ kable(ex_1)
 
 | plot\_replicate | date                             | measurement\_1 |
 |:----------------|:---------------------------------|---------------:|
-| A\_1            | 2016-06-12                       |             10 |
-| A\_2            | 2016-06-12                       |              9 |
-| A\_3            | 2016-06-12                       |             10 |
+| A\_1            | 2016-06-12                       |             13 |
+| A\_2            | 2016-06-12                       |             16 |
+| A\_3            | 2016-06-12                       |             13 |
 | A\_4            | 2016-06-12                       |             11 |
 | B\_1            | 2016-06-12                       |              8 |
 | B\_2            | 2016-06-12                       |              5 |
-| B\_3            | 2016-06-12                       |             11 |
-| B\_4            | 2016-06-12                       |              9 |
-| C\_1            | 2016-06-12                       |             11 |
-| C\_2            | 2016-06-12                       |             12 |
-| C\_3            | 2016-06-12                       |              9 |
-| C\_4            | 2016-06-12                       |              8 |
-| D\_1            | 2016-06-12                       |              9 |
-| D\_2            | 2016-06-12                       |              8 |
-| D\_3            | 2016-06-12                       |             10 |
-| D\_4            | 2016-06-12                       |              9 |
-| E\_1            | 2016-06-12                       |              9 |
-| E\_2            | 2016-06-12                       |              7 |
-| E\_3            | 2016-06-12                       |              6 |
+| B\_3            | 2016-06-12                       |              8 |
+| B\_4            | 2016-06-12                       |              5 |
+| C\_1            | 2016-06-12                       |              4 |
+| C\_2            | 2016-06-12                       |              8 |
+| C\_3            | 2016-06-12                       |             14 |
+| C\_4            | 2016-06-12                       |             11 |
+| D\_1            | 2016-06-12                       |             13 |
+| D\_2            | 2016-06-12                       |             11 |
+| D\_3            | 2016-06-12                       |              7 |
+| D\_4            | 2016-06-12                       |              8 |
+| E\_1            | 2016-06-12                       |              8 |
+| E\_2            | 2016-06-12                       |             14 |
+| E\_3            | 2016-06-12                       |             15 |
 | E\_4            | 2016-06-12, measured after lunch |              8 |
 
 ``` r
@@ -155,25 +156,25 @@ aggregate(measurement_1 ~ plot_replicate, FUN = mean, data = ex_1)
 ```
 
     ##    plot_replicate measurement_1
-    ## 1             A_1            10
-    ## 2             A_2             9
-    ## 3             A_3            10
+    ## 1             A_1            13
+    ## 2             A_2            16
+    ## 3             A_3            13
     ## 4             A_4            11
     ## 5             B_1             8
     ## 6             B_2             5
-    ## 7             B_3            11
-    ## 8             B_4             9
-    ## 9             C_1            11
-    ## 10            C_2            12
-    ## 11            C_3             9
-    ## 12            C_4             8
-    ## 13            D_1             9
-    ## 14            D_2             8
-    ## 15            D_3            10
-    ## 16            D_4             9
-    ## 17            E_1             9
-    ## 18            E_2             7
-    ## 19            E_3             6
+    ## 7             B_3             8
+    ## 8             B_4             5
+    ## 9             C_1             4
+    ## 10            C_2             8
+    ## 11            C_3            14
+    ## 12            C_4            11
+    ## 13            D_1            13
+    ## 14            D_2            11
+    ## 15            D_3             7
+    ## 16            D_4             8
+    ## 17            E_1             8
+    ## 18            E_2            14
+    ## 19            E_3            15
     ## 20            E_4             8
 
 Guess it’s “back to excel”
@@ -190,46 +191,46 @@ kable(ex_2)
 
 | plot | replicate | parameter  | value |
 |:-----|----------:|:-----------|------:|
-| A    |         1 | aphids\_n  |   908 |
-| A    |         1 | height\_cm |   295 |
-| A    |         2 | aphids\_n  |   886 |
-| A    |         2 | height\_cm |   277 |
-| A    |         3 | aphids\_n  |   898 |
-| A    |         3 | height\_cm |   285 |
-| A    |         4 | aphids\_n  |   914 |
-| A    |         4 | height\_cm |   281 |
-| B    |         1 | aphids\_n  |   919 |
-| B    |         1 | height\_cm |   274 |
-| B    |         2 | aphids\_n  |   916 |
-| B    |         2 | height\_cm |   301 |
-| B    |         3 | aphids\_n  |   897 |
-| B    |         3 | height\_cm |   295 |
-| B    |         4 | aphids\_n  |   884 |
-| B    |         4 | height\_cm |   273 |
-| C    |         1 | aphids\_n  |   903 |
+| A    |         1 | aphids\_n  |   895 |
+| A    |         1 | height\_cm |   279 |
+| A    |         2 | aphids\_n  |   891 |
+| A    |         2 | height\_cm |   291 |
+| A    |         3 | aphids\_n  |   891 |
+| A    |         3 | height\_cm |   268 |
+| A    |         4 | aphids\_n  |   879 |
+| A    |         4 | height\_cm |   287 |
+| B    |         1 | aphids\_n  |   894 |
+| B    |         1 | height\_cm |   296 |
+| B    |         2 | aphids\_n  |   900 |
+| B    |         2 | height\_cm |   281 |
+| B    |         3 | aphids\_n  |   921 |
+| B    |         3 | height\_cm |   285 |
+| B    |         4 | aphids\_n  |   892 |
+| B    |         4 | height\_cm |   277 |
+| C    |         1 | aphids\_n  |   895 |
 | C    |         1 | height\_cm |   274 |
-| C    |         2 | aphids\_n  |   892 |
-| C    |         2 | height\_cm |   301 |
-| C    |         3 | aphids\_n  |   916 |
-| C    |         3 | height\_cm |   283 |
-| C    |         4 | aphids\_n  |   897 |
-| C    |         4 | height\_cm |   271 |
-| D    |         1 | aphids\_n  |   891 |
-| D    |         1 | height\_cm |   259 |
-| D    |         2 | aphids\_n  |   895 |
-| D    |         2 | height\_cm |   281 |
-| D    |         3 | aphids\_n  |   912 |
-| D    |         3 | height\_cm |   282 |
-| D    |         4 | aphids\_n  |   903 |
-| D    |         4 | height\_cm |   284 |
-| E    |         1 | aphids\_n  |   899 |
-| E    |         1 | height\_cm |   264 |
-| E    |         2 | aphids\_n  |   898 |
-| E    |         2 | height\_cm |   269 |
-| E    |         3 | aphids\_n  |   906 |
-| E    |         3 | height\_cm |   290 |
-| E    |         4 | aphids\_n  |   886 |
-| E    |         4 | height\_cm |   279 |
+| C    |         2 | aphids\_n  |   887 |
+| C    |         2 | height\_cm |   273 |
+| C    |         3 | aphids\_n  |   897 |
+| C    |         3 | height\_cm |   277 |
+| C    |         4 | aphids\_n  |   899 |
+| C    |         4 | height\_cm |   290 |
+| D    |         1 | aphids\_n  |   908 |
+| D    |         1 | height\_cm |   277 |
+| D    |         2 | aphids\_n  |   898 |
+| D    |         2 | height\_cm |   264 |
+| D    |         3 | aphids\_n  |   890 |
+| D    |         3 | height\_cm |   281 |
+| D    |         4 | aphids\_n  |   896 |
+| D    |         4 | height\_cm |   279 |
+| E    |         1 | aphids\_n  |   904 |
+| E    |         1 | height\_cm |   268 |
+| E    |         2 | aphids\_n  |   900 |
+| E    |         2 | height\_cm |   282 |
+| E    |         3 | aphids\_n  |   915 |
+| E    |         3 | height\_cm |   266 |
+| E    |         4 | aphids\_n  |   904 |
+| E    |         4 | height\_cm |   269 |
 
 ``` r
 # View(ex_2)
@@ -1299,9 +1300,12 @@ flights %>%
 
 ![](tidyverse_intro_files/figure-gfm/flights_EDA_scatterplot_facets-1.png)<!-- -->
 
-Are pilots pushing it before Christmas? \# Wrapping up *R for Data
-Science*. Is this data mining or using data from planned experiments?
-Thoughts and discussion.
+Are pilots pushing it before Christmas?
+
+# Wrapping up
+
+*R for Data Science*. Is this data mining or using data from planned
+experiments? Thoughts and discussion.
 
 Questions and comments from you?
 

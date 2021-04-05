@@ -342,7 +342,7 @@ flights %>%
     facet_wrap(vars(carrier))
 
 #' Are pilots pushing it before Christmas?
-
+#'
 #' # Wrapping up
 #' *R for Data Science*. Is this data mining or using data from planned experiments?
 #' Thoughts and discussion. 
