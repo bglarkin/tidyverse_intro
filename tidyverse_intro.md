@@ -55,7 +55,7 @@ Let’s get started!
 
 ``` r
 # Package and library installation
-packages_needed = c("tidyverse", "knitr", "nycflights13")
+packages_needed = c("tidyverse", "knitr", "nycflights13", "magrittr")
 packages_installed = packages_needed %in% rownames(installed.packages())
 
 if (any(! packages_installed))
@@ -75,6 +75,17 @@ for (i in 1:length(packages_needed)) {
     ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
     ## x dplyr::filter() masks stats::filter()
     ## x dplyr::lag()    masks stats::lag()
+
+    ## 
+    ## Attaching package: 'magrittr'
+
+    ## The following object is masked from 'package:purrr':
+    ## 
+    ##     set_names
+
+    ## The following object is masked from 'package:tidyr':
+    ## 
+    ##     extract
 
 # Engagement
 
@@ -123,26 +134,26 @@ kable(ex_1)
 
 | plot\_replicate | date                             | measurement\_1 |
 |:----------------|:---------------------------------|---------------:|
-| A\_1            | 2016-06-12                       |             12 |
-| A\_2            | 2016-06-12                       |              9 |
-| A\_3            | 2016-06-12                       |              7 |
-| A\_4            | 2016-06-12                       |             11 |
-| B\_1            | 2016-06-12                       |              9 |
-| B\_2            | 2016-06-12                       |              5 |
-| B\_3            | 2016-06-12                       |              6 |
-| B\_4            | 2016-06-12                       |             10 |
-| C\_1            | 2016-06-12                       |              4 |
-| C\_2            | 2016-06-12                       |              6 |
-| C\_3            | 2016-06-12                       |             10 |
-| C\_4            | 2016-06-12                       |              6 |
-| D\_1            | 2016-06-12                       |              9 |
-| D\_2            | 2016-06-12                       |              6 |
-| D\_3            | 2016-06-12                       |              5 |
-| D\_4            | 2016-06-12                       |              6 |
-| E\_1            | 2016-06-12                       |             13 |
-| E\_2            | 2016-06-12                       |              7 |
-| E\_3            | 2016-06-12                       |             11 |
-| E\_4            | 2016-06-12, measured after lunch |              7 |
+| A\_1            | 2016-06-12                       |             11 |
+| A\_2            | 2016-06-12                       |             10 |
+| A\_3            | 2016-06-12                       |              8 |
+| A\_4            | 2016-06-12                       |             12 |
+| B\_1            | 2016-06-12                       |             10 |
+| B\_2            | 2016-06-12                       |             15 |
+| B\_3            | 2016-06-12                       |             10 |
+| B\_4            | 2016-06-12                       |              9 |
+| C\_1            | 2016-06-12                       |             14 |
+| C\_2            | 2016-06-12                       |              9 |
+| C\_3            | 2016-06-12                       |              9 |
+| C\_4            | 2016-06-12                       |              7 |
+| D\_1            | 2016-06-12                       |             11 |
+| D\_2            | 2016-06-12                       |              8 |
+| D\_3            | 2016-06-12                       |              4 |
+| D\_4            | 2016-06-12                       |             15 |
+| E\_1            | 2016-06-12                       |              6 |
+| E\_2            | 2016-06-12                       |             12 |
+| E\_3            | 2016-06-12                       |              9 |
+| E\_4            | 2016-06-12, measured after lunch |             13 |
 
 ``` r
 # View(ex_1)
@@ -156,26 +167,26 @@ aggregate(measurement_1 ~ plot_replicate, FUN = mean, data = ex_1)
 ```
 
     ##    plot_replicate measurement_1
-    ## 1             A_1            12
-    ## 2             A_2             9
-    ## 3             A_3             7
-    ## 4             A_4            11
-    ## 5             B_1             9
-    ## 6             B_2             5
-    ## 7             B_3             6
-    ## 8             B_4            10
-    ## 9             C_1             4
-    ## 10            C_2             6
-    ## 11            C_3            10
-    ## 12            C_4             6
-    ## 13            D_1             9
-    ## 14            D_2             6
-    ## 15            D_3             5
-    ## 16            D_4             6
-    ## 17            E_1            13
-    ## 18            E_2             7
-    ## 19            E_3            11
-    ## 20            E_4             7
+    ## 1             A_1            11
+    ## 2             A_2            10
+    ## 3             A_3             8
+    ## 4             A_4            12
+    ## 5             B_1            10
+    ## 6             B_2            15
+    ## 7             B_3            10
+    ## 8             B_4             9
+    ## 9             C_1            14
+    ## 10            C_2             9
+    ## 11            C_3             9
+    ## 12            C_4             7
+    ## 13            D_1            11
+    ## 14            D_2             8
+    ## 15            D_3             4
+    ## 16            D_4            15
+    ## 17            E_1             6
+    ## 18            E_2            12
+    ## 19            E_3             9
+    ## 20            E_4            13
 
 Guess it’s “back to excel”
 
@@ -191,46 +202,46 @@ kable(ex_2)
 
 | plot | replicate | parameter  | value |
 |:-----|----------:|:-----------|------:|
-| A    |         1 | aphids\_n  |   896 |
-| A    |         1 | height\_cm |   295 |
-| A    |         2 | aphids\_n  |   893 |
-| A    |         2 | height\_cm |   301 |
-| A    |         3 | aphids\_n  |   911 |
-| A    |         3 | height\_cm |   288 |
-| A    |         4 | aphids\_n  |   890 |
-| A    |         4 | height\_cm |   288 |
-| B    |         1 | aphids\_n  |   905 |
-| B    |         1 | height\_cm |   285 |
-| B    |         2 | aphids\_n  |   917 |
-| B    |         2 | height\_cm |   292 |
-| B    |         3 | aphids\_n  |   903 |
-| B    |         3 | height\_cm |   283 |
-| B    |         4 | aphids\_n  |   910 |
-| B    |         4 | height\_cm |   277 |
-| C    |         1 | aphids\_n  |   908 |
-| C    |         1 | height\_cm |   289 |
-| C    |         2 | aphids\_n  |   917 |
-| C    |         2 | height\_cm |   271 |
+| A    |         1 | aphids\_n  |   893 |
+| A    |         1 | height\_cm |   289 |
+| A    |         2 | aphids\_n  |   908 |
+| A    |         2 | height\_cm |   271 |
+| A    |         3 | aphids\_n  |   887 |
+| A    |         3 | height\_cm |   273 |
+| A    |         4 | aphids\_n  |   901 |
+| A    |         4 | height\_cm |   274 |
+| B    |         1 | aphids\_n  |   887 |
+| B    |         1 | height\_cm |   287 |
+| B    |         2 | aphids\_n  |   912 |
+| B    |         2 | height\_cm |   259 |
+| B    |         3 | aphids\_n  |   899 |
+| B    |         3 | height\_cm |   292 |
+| B    |         4 | aphids\_n  |   909 |
+| B    |         4 | height\_cm |   290 |
+| C    |         1 | aphids\_n  |   901 |
+| C    |         1 | height\_cm |   286 |
+| C    |         2 | aphids\_n  |   887 |
+| C    |         2 | height\_cm |   285 |
 | C    |         3 | aphids\_n  |   912 |
-| C    |         3 | height\_cm |   293 |
-| C    |         4 | aphids\_n  |   905 |
-| C    |         4 | height\_cm |   286 |
-| D    |         1 | aphids\_n  |   899 |
-| D    |         1 | height\_cm |   269 |
-| D    |         2 | aphids\_n  |   900 |
-| D    |         2 | height\_cm |   290 |
-| D    |         3 | aphids\_n  |   890 |
-| D    |         3 | height\_cm |   275 |
-| D    |         4 | aphids\_n  |   897 |
-| D    |         4 | height\_cm |   251 |
-| E    |         1 | aphids\_n  |   900 |
-| E    |         1 | height\_cm |   277 |
-| E    |         2 | aphids\_n  |   905 |
-| E    |         2 | height\_cm |   266 |
-| E    |         3 | aphids\_n  |   902 |
-| E    |         3 | height\_cm |   274 |
-| E    |         4 | aphids\_n  |   906 |
-| E    |         4 | height\_cm |   279 |
+| C    |         3 | height\_cm |   290 |
+| C    |         4 | aphids\_n  |   921 |
+| C    |         4 | height\_cm |   299 |
+| D    |         1 | aphids\_n  |   897 |
+| D    |         1 | height\_cm |   289 |
+| D    |         2 | aphids\_n  |   901 |
+| D    |         2 | height\_cm |   286 |
+| D    |         3 | aphids\_n  |   925 |
+| D    |         3 | height\_cm |   255 |
+| D    |         4 | aphids\_n  |   892 |
+| D    |         4 | height\_cm |   292 |
+| E    |         1 | aphids\_n  |   905 |
+| E    |         1 | height\_cm |   268 |
+| E    |         2 | aphids\_n  |   903 |
+| E    |         2 | height\_cm |   300 |
+| E    |         3 | aphids\_n  |   896 |
+| E    |         3 | height\_cm |   262 |
+| E    |         4 | aphids\_n  |   900 |
+| E    |         4 | height\_cm |   275 |
 
 ``` r
 # View(ex_2)
@@ -414,6 +425,18 @@ iris
     ## 148          6.5         3.0          5.2         2.0  virginica
     ## 149          6.2         3.4          5.4         2.3  virginica
     ## 150          5.9         3.0          5.1         1.8  virginica
+
+``` r
+head(iris)
+```
+
+    ##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+    ## 1          5.1         3.5          1.4         0.2  setosa
+    ## 2          4.9         3.0          1.4         0.2  setosa
+    ## 3          4.7         3.2          1.3         0.2  setosa
+    ## 4          4.6         3.1          1.5         0.2  setosa
+    ## 5          5.0         3.6          1.4         0.2  setosa
+    ## 6          5.4         3.9          1.7         0.4  setosa
 
 ``` r
 # tibble
@@ -614,8 +637,11 @@ log(x) # this is verb, noun
 The forward pipe aligns code with the order in which we think and speak
 
 ``` r
-## # <- this is noun, verb
+x %>% log() # this is noun, verb
 ```
+
+    ## [1] -2.216407397 -1.024432890 -0.462035460 -0.004008021 -0.663588378
+    ## [6] -1.951928221 -4.074541935 -0.187535124 -0.097612829
 
 An annoying but useful example:
 
@@ -985,6 +1011,27 @@ flights %>% glimpse()
     ## $ minute         <dbl> 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…
     ## $ time_hour      <dttm> 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…
 
+``` r
+flights %>% filter(month == 2, day == 10, dep_delay <= 0)
+```
+
+    ## # A tibble: 429 x 19
+    ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+    ##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>
+    ##  1  2013     2    10      455            500        -5      625            650
+    ##  2  2013     2    10      553            600        -7      826            858
+    ##  3  2013     2    10      556            600        -4      708            716
+    ##  4  2013     2    10      556            600        -4      923            910
+    ##  5  2013     2    10      557            600        -3      854            911
+    ##  6  2013     2    10      557            559        -2      915            930
+    ##  7  2013     2    10      558            600        -2      810            815
+    ##  8  2013     2    10      600            600         0      849            905
+    ##  9  2013     2    10      603            610        -7      850            915
+    ## 10  2013     2    10      607            610        -3      811            817
+    ## # … with 419 more rows, and 11 more variables: arr_delay <dbl>, carrier <chr>,
+    ## #   flight <int>, tailnum <chr>, origin <chr>, dest <chr>, air_time <dbl>,
+    ## #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+
 Chat your answers to Art as quickly as you can…
 
 ``` r
@@ -1013,6 +1060,27 @@ flights %>% select(distance, air_time)
     ##  9      944      140
     ## 10      733      138
     ## # … with 336,766 more rows
+
+``` r
+flights %>% select(starts_with("sched"), everything())
+```
+
+    ## # A tibble: 336,776 x 19
+    ##    sched_dep_time sched_arr_time  year month   day dep_time dep_delay arr_time
+    ##             <int>          <int> <int> <int> <int>    <int>     <dbl>    <int>
+    ##  1            515            819  2013     1     1      517         2      830
+    ##  2            529            830  2013     1     1      533         4      850
+    ##  3            540            850  2013     1     1      542         2      923
+    ##  4            545           1022  2013     1     1      544        -1     1004
+    ##  5            600            837  2013     1     1      554        -6      812
+    ##  6            558            728  2013     1     1      554        -4      740
+    ##  7            600            854  2013     1     1      555        -5      913
+    ##  8            600            723  2013     1     1      557        -3      709
+    ##  9            600            846  2013     1     1      557        -3      838
+    ## 10            600            745  2013     1     1      558        -2      753
+    ## # … with 336,766 more rows, and 11 more variables: arr_delay <dbl>,
+    ## #   carrier <chr>, flight <int>, tailnum <chr>, origin <chr>, dest <chr>,
+    ## #   air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
 
 ## Verb: `mutate()`
 
@@ -1049,7 +1117,7 @@ flights %>%
 ## Verbs: `group_by()` and `summarize()`
 
 -   Frequently used together
--   Roughly like `tapply()` but much more flexible
+-   Roughly like `tapply()` or `aggregate()` but much more flexible
 -   Act on rows grouped by variables, usually character or factor levels
 -   Prepares data frame for further transformation, produces results
 
@@ -1199,16 +1267,27 @@ head(as.data.frame(flights))
 ``` r
 flights_2 <- flights[which(complete.cases(flights)), c(10, 16, 15)]
 flights_2$speed_mph <- flights_2$distance / (flights_2$air_time / 60)
-flights_speed <- aggregate(speed_mph ~ carrier, FUN = mean, data = flights) # what???
-```
-
-    ## Error in eval(predvars, data, env): object 'speed_mph' not found
-
-``` r
+flights_speed <- aggregate(speed_mph ~ carrier, FUN = mean, data = flights_2) # what???
 flights_speed[order(desc(flights_speed$speed_mph)), ]
 ```
 
-    ## Error in eval(expr, envir, enclos): object 'flights_speed' not found
+    ##    carrier speed_mph
+    ## 9       HA  480.3577
+    ## 14      VX  446.1749
+    ## 3       AS  443.6789
+    ## 7       F9  425.1721
+    ## 12      UA  420.8838
+    ## 5       DL  418.4628
+    ## 2       AA  417.4727
+    ## 15      WN  400.5320
+    ## 4       B6  399.9715
+    ## 8       FL  394.3581
+    ## 10      MQ  368.4028
+    ## 11      OO  366.3201
+    ## 6       EV  362.9436
+    ## 1       9E  345.4304
+    ## 13      US  341.9397
+    ## 16      YV  331.9700
 
 Of course it’s doable, but it’s harder to see what happened, and the
 intermediate objects always cause problems \#\#\# Ok, what do the
@@ -1273,7 +1352,7 @@ flights %>%
     filter(month %in% c(1, 12),
            day == 20, !is.na(air_delay),
            dep_delay <= 60) %>%
-    # filter(!(carrier %in% c("AS", "F9", "FL", "HA", "VX", "YV"))) %>%
+    filter(!(carrier %in% c("AS", "F9", "FL", "HA", "VX", "YV"))) %>%
     ggplot(aes(x = speed_mph, y = air_delay, group = date)) +
     geom_smooth(aes(color = date),
                 size   = 0,
@@ -1285,18 +1364,7 @@ flights %>%
 ```
 
     ## `geom_smooth()` using formula 'y ~ x'
-
-    ## Warning in qt((1 - level)/2, df): NaNs produced
-
-    ## Warning in qt((1 - level)/2, df): NaNs produced
-
     ## `geom_smooth()` using formula 'y ~ x'
-
-    ## Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning -
-    ## Inf
-
-    ## Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning -
-    ## Inf
 
 ![](tidyverse_intro_files/figure-gfm/flights_EDA_scatterplot_facets-1.png)<!-- -->
 

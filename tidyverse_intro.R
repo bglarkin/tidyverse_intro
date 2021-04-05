@@ -34,7 +34,7 @@
 #' Let's get started!
 
 # Package and library installation
-packages_needed = c("tidyverse", "knitr", "nycflights13")
+packages_needed = c("tidyverse", "knitr", "nycflights13", "magrittr")
 packages_installed = packages_needed %in% rownames(installed.packages())
 
 if (any(! packages_installed))
@@ -51,7 +51,8 @@ for (i in 1:length(packages_needed)) {
 #' 
 #' * It's more than a collection of functions and fads (con sarn it, these new-fangled pipes!)
 #' * A paradigm for data science, and it's here to stay
-#' * Why tidyverse? It allows us to use intuitive, linear processes to get answers and results from data quickly
+#' * Why tidyverse? It allows us to use intuitive, 
+#' linear processes to get answers and results from data quickly
 #'
 #' ## A *paradigm*???
 #' What do you need before creating graphics, applying models, and testing hypotheses? 
@@ -118,6 +119,7 @@ kable(ex_2)
 #+ iris_tibble
 # data frame
 iris 
+head(iris)
 # tibble
 (iris_t <- as_tibble(iris)) 
 # sometimes you must convert
@@ -136,7 +138,7 @@ x <- c(0.109, 0.359, 0.63, 0.996, 0.515, 0.142, 0.017, 0.829, 0.907)
 log(x) # this is verb, noun
 
 #' The forward pipe aligns code with the order in which we think and speak
-## # <- this is noun, verb
+x %>% log() # this is noun, verb
 
 #' An annoying but useful example:
 round(exp(mean(log(x))), 1) # "nested"
@@ -187,7 +189,8 @@ iris %>% aggregate(Sepal.Length ~ Species, FUN = mean, data = .)
 #' 1. and create a new data frame.
 #' 
 #' * Chapter 5 in R4DS
-#' * Using `nycflights13::flights`. (Sorry not biology). This data frame contains all 336,776 flights that 
+#' * Using `nycflights13::flights`. (Sorry not biology). This data frame contains all 
+#' 336,776 flights that 
 #' departed from New York City in 2013. Each row contains data from a single flight. 
 #' The data comes from the US Bureau of Transportation 
 #' Statistics, and is documented in `?flights`. Let's have a look:
@@ -239,6 +242,8 @@ for (i in 1:length(packages_needed)) {
 
 flights %>% glimpse()
 
+flights %>% filter(month == 2, day == 10, dep_delay <= 0)
+
 #' Chat your answers to Art as quickly as you can...
 # answer...
 
@@ -247,6 +252,7 @@ flights %>% glimpse()
 #' * Acts on columns
 #' 
 flights %>% select(distance, air_time)
+flights %>% select(starts_with("sched"), everything())
 
 #' ## Verb: `mutate()`
 #' 
@@ -261,7 +267,7 @@ flights %>%
 #' ## Verbs: `group_by()` and `summarize()`
 #' 
 #' * Frequently used together
-#' * Roughly like `tapply()` but much more flexible
+#' * Roughly like `tapply()` or `aggregate()` but much more flexible
 #' * Act on rows grouped by variables, usually character or factor levels
 #' * Prepares data frame for further transformation, produces results
 #' 
@@ -294,7 +300,7 @@ flights_2 <- flights[, flights$carrier]
 head(as.data.frame(flights))
 flights_2 <- flights[which(complete.cases(flights)), c(10, 16, 15)]
 flights_2$speed_mph <- flights_2$distance / (flights_2$air_time / 60)
-flights_speed <- aggregate(speed_mph ~ carrier, FUN = mean, data = flights) # what???
+flights_speed <- aggregate(speed_mph ~ carrier, FUN = mean, data = flights_2) # what???
 flights_speed[order(desc(flights_speed$speed_mph)), ]
 
 #' Of course it's doable, but it's harder to see what happened, and the intermediate objects always cause problems
@@ -331,7 +337,7 @@ flights %>%
     filter(month %in% c(1, 12),
            day == 20, !is.na(air_delay),
            dep_delay <= 60) %>%
-    # filter(!(carrier %in% c("AS", "F9", "FL", "HA", "VX", "YV"))) %>%
+    filter(!(carrier %in% c("AS", "F9", "FL", "HA", "VX", "YV"))) %>%
     ggplot(aes(x = speed_mph, y = air_delay, group = date)) +
     geom_smooth(aes(color = date),
                 size   = 0,
