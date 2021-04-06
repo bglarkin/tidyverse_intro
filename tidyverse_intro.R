@@ -358,9 +358,11 @@ flights %>%
 #' * If you are on GitHub, please comment, correct, or shred this script. [Link](https://github.com/bglarkin/tidyverse_intro) to repo.
 #' * Or [download](https://mpgcloud.egnyte.com/dl/cguemdnod0) the R script
 #' 
+#' 
 #' # Homework
 #' 
 #' * You will need to load the `tidyverse` library (after installing the package if necessary)
+#' * With this script loaded in RStudio, choose File>Compile Report to render the document (if you want)
 #' 
 #' ## Transform a messy data frame into a tidy tibble
 #' 
@@ -377,10 +379,11 @@ hw_1 <- data.frame(
 #' 
 #' * Produce hw_2 using the code below. 
 #' * Transform hw_2 into a tidy tibble using pipes and tidyverse functions. Hint = `?pivot_wider`
-#' * Wrangle the data using tidyverse tools into ggplot to create scatterplots with 
+#' * Wrangle the data using tidyverse tools and pipe into ggplot to create scatterplots with 
 #' linear trendlines superimposed.
 #' * Put height_cm on the x axis, aphids_n on the y_axis, and facet on plot
 #' * Hints: `?geom_point`, `?geom_smooth`, `?facet_wrap`
+#' 
 #+ hw_2
 hw_2 <- data.frame(
     plot = rep(LETTERS[1:5], each = 8),
