@@ -134,26 +134,26 @@ kable(ex_1)
 
 | plot\_replicate | date                             | measurement\_1 |
 |:----------------|:---------------------------------|---------------:|
-| A\_1            | 2016-06-12                       |             11 |
+| A\_1            | 2016-06-12                       |             15 |
 | A\_2            | 2016-06-12                       |             10 |
-| A\_3            | 2016-06-12                       |              8 |
-| A\_4            | 2016-06-12                       |             12 |
+| A\_3            | 2016-06-12                       |             11 |
+| A\_4            | 2016-06-12                       |             11 |
 | B\_1            | 2016-06-12                       |             10 |
-| B\_2            | 2016-06-12                       |             15 |
-| B\_3            | 2016-06-12                       |             10 |
-| B\_4            | 2016-06-12                       |              9 |
-| C\_1            | 2016-06-12                       |             14 |
-| C\_2            | 2016-06-12                       |              9 |
-| C\_3            | 2016-06-12                       |              9 |
-| C\_4            | 2016-06-12                       |              7 |
-| D\_1            | 2016-06-12                       |             11 |
-| D\_2            | 2016-06-12                       |              8 |
-| D\_3            | 2016-06-12                       |              4 |
-| D\_4            | 2016-06-12                       |             15 |
-| E\_1            | 2016-06-12                       |              6 |
-| E\_2            | 2016-06-12                       |             12 |
-| E\_3            | 2016-06-12                       |              9 |
-| E\_4            | 2016-06-12, measured after lunch |             13 |
+| B\_2            | 2016-06-12                       |              9 |
+| B\_3            | 2016-06-12                       |              4 |
+| B\_4            | 2016-06-12                       |              8 |
+| C\_1            | 2016-06-12                       |              6 |
+| C\_2            | 2016-06-12                       |              7 |
+| C\_3            | 2016-06-12                       |              7 |
+| C\_4            | 2016-06-12                       |             10 |
+| D\_1            | 2016-06-12                       |              9 |
+| D\_2            | 2016-06-12                       |              9 |
+| D\_3            | 2016-06-12                       |             15 |
+| D\_4            | 2016-06-12                       |              6 |
+| E\_1            | 2016-06-12                       |             11 |
+| E\_2            | 2016-06-12                       |              8 |
+| E\_3            | 2016-06-12                       |             10 |
+| E\_4            | 2016-06-12, measured after lunch |             11 |
 
 ``` r
 # View(ex_1)
@@ -167,26 +167,26 @@ aggregate(measurement_1 ~ plot_replicate, FUN = mean, data = ex_1)
 ```
 
     ##    plot_replicate measurement_1
-    ## 1             A_1            11
+    ## 1             A_1            15
     ## 2             A_2            10
-    ## 3             A_3             8
-    ## 4             A_4            12
+    ## 3             A_3            11
+    ## 4             A_4            11
     ## 5             B_1            10
-    ## 6             B_2            15
-    ## 7             B_3            10
-    ## 8             B_4             9
-    ## 9             C_1            14
-    ## 10            C_2             9
-    ## 11            C_3             9
-    ## 12            C_4             7
-    ## 13            D_1            11
-    ## 14            D_2             8
-    ## 15            D_3             4
-    ## 16            D_4            15
-    ## 17            E_1             6
-    ## 18            E_2            12
-    ## 19            E_3             9
-    ## 20            E_4            13
+    ## 6             B_2             9
+    ## 7             B_3             4
+    ## 8             B_4             8
+    ## 9             C_1             6
+    ## 10            C_2             7
+    ## 11            C_3             7
+    ## 12            C_4            10
+    ## 13            D_1             9
+    ## 14            D_2             9
+    ## 15            D_3            15
+    ## 16            D_4             6
+    ## 17            E_1            11
+    ## 18            E_2             8
+    ## 19            E_3            10
+    ## 20            E_4            11
 
 Guess it’s “back to excel”
 
@@ -202,46 +202,46 @@ kable(ex_2)
 
 | plot | replicate | parameter  | value |
 |:-----|----------:|:-----------|------:|
-| A    |         1 | aphids\_n  |   893 |
-| A    |         1 | height\_cm |   289 |
-| A    |         2 | aphids\_n  |   908 |
-| A    |         2 | height\_cm |   271 |
-| A    |         3 | aphids\_n  |   887 |
-| A    |         3 | height\_cm |   273 |
-| A    |         4 | aphids\_n  |   901 |
-| A    |         4 | height\_cm |   274 |
-| B    |         1 | aphids\_n  |   887 |
-| B    |         1 | height\_cm |   287 |
-| B    |         2 | aphids\_n  |   912 |
-| B    |         2 | height\_cm |   259 |
-| B    |         3 | aphids\_n  |   899 |
-| B    |         3 | height\_cm |   292 |
-| B    |         4 | aphids\_n  |   909 |
-| B    |         4 | height\_cm |   290 |
-| C    |         1 | aphids\_n  |   901 |
-| C    |         1 | height\_cm |   286 |
-| C    |         2 | aphids\_n  |   887 |
-| C    |         2 | height\_cm |   285 |
-| C    |         3 | aphids\_n  |   912 |
-| C    |         3 | height\_cm |   290 |
-| C    |         4 | aphids\_n  |   921 |
-| C    |         4 | height\_cm |   299 |
-| D    |         1 | aphids\_n  |   897 |
-| D    |         1 | height\_cm |   289 |
-| D    |         2 | aphids\_n  |   901 |
-| D    |         2 | height\_cm |   286 |
-| D    |         3 | aphids\_n  |   925 |
-| D    |         3 | height\_cm |   255 |
-| D    |         4 | aphids\_n  |   892 |
-| D    |         4 | height\_cm |   292 |
-| E    |         1 | aphids\_n  |   905 |
-| E    |         1 | height\_cm |   268 |
-| E    |         2 | aphids\_n  |   903 |
-| E    |         2 | height\_cm |   300 |
-| E    |         3 | aphids\_n  |   896 |
-| E    |         3 | height\_cm |   262 |
-| E    |         4 | aphids\_n  |   900 |
-| E    |         4 | height\_cm |   275 |
+| A    |         1 | aphids\_n  |   897 |
+| A    |         1 | height\_cm |   277 |
+| A    |         2 | aphids\_n  |   891 |
+| A    |         2 | height\_cm |   291 |
+| A    |         3 | aphids\_n  |   914 |
+| A    |         3 | height\_cm |   277 |
+| A    |         4 | aphids\_n  |   897 |
+| A    |         4 | height\_cm |   282 |
+| B    |         1 | aphids\_n  |   882 |
+| B    |         1 | height\_cm |   281 |
+| B    |         2 | aphids\_n  |   919 |
+| B    |         2 | height\_cm |   277 |
+| B    |         3 | aphids\_n  |   888 |
+| B    |         3 | height\_cm |   268 |
+| B    |         4 | aphids\_n  |   888 |
+| B    |         4 | height\_cm |   261 |
+| C    |         1 | aphids\_n  |   899 |
+| C    |         1 | height\_cm |   267 |
+| C    |         2 | aphids\_n  |   921 |
+| C    |         2 | height\_cm |   292 |
+| C    |         3 | aphids\_n  |   914 |
+| C    |         3 | height\_cm |   256 |
+| C    |         4 | aphids\_n  |   917 |
+| C    |         4 | height\_cm |   258 |
+| D    |         1 | aphids\_n  |   888 |
+| D    |         1 | height\_cm |   259 |
+| D    |         2 | aphids\_n  |   907 |
+| D    |         2 | height\_cm |   276 |
+| D    |         3 | aphids\_n  |   911 |
+| D    |         3 | height\_cm |   289 |
+| D    |         4 | aphids\_n  |   896 |
+| D    |         4 | height\_cm |   278 |
+| E    |         1 | aphids\_n  |   894 |
+| E    |         1 | height\_cm |   287 |
+| E    |         2 | aphids\_n  |   901 |
+| E    |         2 | height\_cm |   247 |
+| E    |         3 | aphids\_n  |   884 |
+| E    |         3 | height\_cm |   269 |
+| E    |         4 | aphids\_n  |   904 |
+| E    |         4 | height\_cm |   286 |
 
 ``` r
 # View(ex_2)
@@ -1386,6 +1386,8 @@ Questions and comments from you?
 
 -   You will need to load the `tidyverse` library (after installing the
     package if necessary)
+-   With this script loaded in RStudio, choose File&gt;Compile Report to
+    render the document (if you want)
 
 ## Transform a messy data frame into a tidy tibble
 
@@ -1400,13 +1402,43 @@ hw_1 <- data.frame(
 )
 ```
 
+``` r
+hw_1 %>% 
+    separate(plot_replicate, into = c("plot", "replicate")) %>% 
+    as_tibble()
+```
+
+    ## # A tibble: 20 x 4
+    ##    plot  replicate date       measurement_1
+    ##    <chr> <chr>     <chr>              <int>
+    ##  1 A     1         2016-06-12            12
+    ##  2 A     2         2016-06-12             3
+    ##  3 A     3         2016-06-12            14
+    ##  4 A     4         2016-06-12            10
+    ##  5 B     1         2016-06-12            10
+    ##  6 B     2         2016-06-12            12
+    ##  7 B     3         2016-06-12            15
+    ##  8 B     4         2016-06-12             9
+    ##  9 C     1         2016-06-12            13
+    ## 10 C     2         2016-06-12             9
+    ## 11 C     3         2016-06-12             8
+    ## 12 C     4         2016-06-12            11
+    ## 13 D     1         2016-06-12            13
+    ## 14 D     2         2016-06-12            11
+    ## 15 D     3         2016-06-12            13
+    ## 16 D     4         2016-06-12            11
+    ## 17 E     1         2016-06-12            13
+    ## 18 E     2         2016-06-12            15
+    ## 19 E     3         2016-06-12            13
+    ## 20 E     4         2016-06-12            12
+
 ## Are aphids more numerous on taller plants?
 
 -   Produce hw\_2 using the code below.
 -   Transform hw\_2 into a tidy tibble using pipes and tidyverse
     functions. Hint = `?pivot_wider`
--   Wrangle the data using tidyverse tools into ggplot to create
-    scatterplots with linear trendlines superimposed.
+-   Wrangle the data using tidyverse tools and pipe into ggplot to
+    create scatterplots with linear trendlines superimposed.
 -   Put height\_cm on the x axis, aphids\_n on the y\_axis, and facet on
     plot
 -   Hints: `?geom_point`, `?geom_smooth`, `?facet_wrap`
@@ -1419,6 +1451,19 @@ hw_2 <- data.frame(
     measurement = rep(c(700, 80), 20) + c(sort(rbinom(30, 500, 0.4)), rbinom(10, 500, 0.4))
 )
 ```
+
+``` r
+hw_2 %>% 
+    pivot_wider(names_from = parameter, values_from = measurement) %>%  # `pivot_wider()` produces a tibble as output
+    ggplot(aes(x = height_cm, y = aphids_n)) +
+    geom_point() +
+    geom_smooth(method = "lm") +
+    facet_wrap(vars(plot)) #, scales = "free_x") # note use of scales
+```
+
+    ## `geom_smooth()` using formula 'y ~ x'
+
+![](tidyverse_intro_files/figure-gfm/hw_2_solved-1.png)<!-- -->
 
 ## Tidy vs. messy
 
@@ -1439,6 +1484,34 @@ hw_3 <- data.frame(
 )
 ```
 
+``` r
+hw_3 %>% 
+    as_tibble() %>% # unnecessary but follows lesson strictly
+    ggplot() +
+    geom_boxplot(aes(x = insects, y = count)) +
+    facet_wrap(vars(plot)) # not explicit in question, but appropriate to look for plot effect
+```
+
+![](tidyverse_intro_files/figure-gfm/hw_3_solved_1-1.png)<!-- -->
+
+``` r
+# Data are suitable for analysis as-is if the goal is to compare aphid and ant counts in plots
+```
+
+``` r
+hw_3 %>% 
+    pivot_wider(names_from = insects, values_from = count) %>% 
+    as_tibble() %>% # unnecessary but follows lesson strictly
+    ggplot(aes(x = aphids, y = ants)) +
+    geom_point() +
+    geom_smooth(method = "lm") +
+    facet_wrap(vars(plot), scales = "free_x") # not explicit in question, but appropriate to look for plot effect
+```
+
+    ## `geom_smooth()` using formula 'y ~ x'
+
+![](tidyverse_intro_files/figure-gfm/hw_3_solved_2-1.png)<!-- -->
+
 ## Bonus challenge
 
 Use a [join](https://dplyr.tidyverse.org/reference/mutate-joins.html)
@@ -1448,3 +1521,104 @@ the largest number of airplane models?**
 
 -   Hint: install/load `nycflights13` and then look at the `?planes` and
     `?flights` data frames.
+
+``` r
+flights %>% glimpse()
+```
+
+    ## Rows: 336,776
+    ## Columns: 19
+    ## $ year           <int> 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…
+    ## $ month          <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+    ## $ day            <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+    ## $ dep_time       <int> 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …
+    ## $ sched_dep_time <int> 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …
+    ## $ dep_delay      <dbl> 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…
+    ## $ arr_time       <int> 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…
+    ## $ sched_arr_time <int> 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…
+    ## $ arr_delay      <dbl> 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…
+    ## $ carrier        <chr> "UA", "UA", "AA", "B6", "DL", "UA", "B6", "EV", "B6", "…
+    ## $ flight         <int> 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…
+    ## $ tailnum        <chr> "N14228", "N24211", "N619AA", "N804JB", "N668DN", "N394…
+    ## $ origin         <chr> "EWR", "LGA", "JFK", "JFK", "LGA", "EWR", "EWR", "LGA",…
+    ## $ dest           <chr> "IAH", "IAH", "MIA", "BQN", "ATL", "ORD", "FLL", "IAD",…
+    ## $ air_time       <dbl> 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…
+    ## $ distance       <dbl> 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …
+    ## $ hour           <dbl> 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…
+    ## $ minute         <dbl> 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…
+    ## $ time_hour      <dttm> 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…
+
+``` r
+planes %>% glimpse()
+```
+
+    ## Rows: 3,322
+    ## Columns: 9
+    ## $ tailnum      <chr> "N10156", "N102UW", "N103US", "N104UW", "N10575", "N105UW…
+    ## $ year         <int> 2004, 1998, 1999, 1999, 2002, 1999, 1999, 1999, 1999, 199…
+    ## $ type         <chr> "Fixed wing multi engine", "Fixed wing multi engine", "Fi…
+    ## $ manufacturer <chr> "EMBRAER", "AIRBUS INDUSTRIE", "AIRBUS INDUSTRIE", "AIRBU…
+    ## $ model        <chr> "EMB-145XR", "A320-214", "A320-214", "A320-214", "EMB-145…
+    ## $ engines      <int> 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …
+    ## $ seats        <int> 55, 182, 182, 182, 55, 182, 182, 182, 182, 182, 55, 55, 5…
+    ## $ speed        <int> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+    ## $ engine       <chr> "Turbo-fan", "Turbo-fan", "Turbo-fan", "Turbo-fan", "Turb…
+
+In the planes data frame, the variable `tailnum` is associated with the
+airplane `model`. The variable `tailnum` can join the flights and planes
+data frames. `Group_by` and `summarize()` are necessary to answer the
+question. Calling `distinct` avoids two separate rounds of `group_by()`
+and `summarize()`. To reach the answer quickly, calling `arrange()` can
+put the top carrier at the top of the tibble. Alternatively, a second
+call to `summarize` which executes `max()` on the summary variable would
+work.
+
+``` r
+flights %>% 
+    left_join(planes, by = "tailnum") %>% # best practice to specify `by = ` to maintain control over join keys
+    distinct(carrier, model) %>% 
+    group_by(carrier) %>% 
+    summarize(n = n()) %>% ungroup() %>% 
+    arrange(-n)
+```
+
+    ## # A tibble: 16 x 2
+    ##    carrier     n
+    ##    <chr>   <int>
+    ##  1 AA         32
+    ##  2 DL         25
+    ##  3 WN         22
+    ##  4 UA         18
+    ##  5 US         13
+    ##  6 B6          7
+    ##  7 FL          7
+    ##  8 EV          6
+    ##  9 MQ          5
+    ## 10 AS          4
+    ## 11 9E          3
+    ## 12 F9          3
+    ## 13 OO          3
+    ## 14 VX          3
+    ## 15 YV          3
+    ## 16 HA          1
+
+``` r
+flights %>% 
+    left_join(planes, by = "tailnum") %>% 
+    group_by(carrier, model) %>% 
+    summarize(n = n()) %>% ungroup() %>% # this summary is meaningless, which is why I prefer using `distinct()` or maybe `slice()`
+    group_by(carrier) %>% 
+    summarize(n = n()) %>%
+    slice_max(n) %>% 
+    left_join(airlines, by = "carrier") # pretty display
+```
+
+    ## `summarise()` has grouped output by 'carrier'. You can override using the `.groups` argument.
+
+    ## # A tibble: 1 x 3
+    ##   carrier     n name                  
+    ##   <chr>   <int> <chr>                 
+    ## 1 AA         32 American Airlines Inc.
+
+Many paths exist to the answer, but they all lead to American Airlines
+flying the most airplane models out of NYC in 2013.

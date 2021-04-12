@@ -375,6 +375,11 @@ hw_1 <- data.frame(
     measurement_1 = rbinom(20, 50, 0.2)
 )
 
+#+ hw_1_solved
+hw_1 %>% 
+    separate(plot_replicate, into = c("plot", "replicate")) %>% 
+    as_tibble()
+
 #' ## Are aphids more numerous on taller plants?
 #' 
 #' * Produce hw_2 using the code below. 
@@ -392,6 +397,14 @@ hw_2 <- data.frame(
     measurement = rep(c(700, 80), 20) + c(sort(rbinom(30, 500, 0.4)), rbinom(10, 500, 0.4))
 )
 
+#+ hw_2_solved
+hw_2 %>% 
+    pivot_wider(names_from = parameter, values_from = measurement) %>%  # `pivot_wider()` produces a tibble as output
+    ggplot(aes(x = height_cm, y = aphids_n)) +
+    geom_point() +
+    geom_smooth(method = "lm") +
+    facet_wrap(vars(plot)) #, scales = "free_x") # note use of scales
+
 #' ## Tidy vs. messy
 #' 
 #' * Explain why hw_3 (see below) is messy as it is
@@ -408,6 +421,23 @@ hw_3 <- data.frame(
     count = rep(c(70, 20), 20) + rnorm(40, 0, 5) %>% round(., 0)
 )
 
+#+ hw_3_solved_1
+hw_3 %>% 
+    as_tibble() %>% # unnecessary but follows lesson strictly
+    ggplot() +
+    geom_boxplot(aes(x = insects, y = count)) +
+    facet_wrap(vars(plot)) # not explicit in question, but appropriate to look for plot effect
+# Data are suitable for analysis as-is if the goal is to compare aphid and ant counts in plots
+
+#+ hw_3_solved_2
+hw_3 %>% 
+    pivot_wider(names_from = insects, values_from = count) %>% 
+    as_tibble() %>% # unnecessary but follows lesson strictly
+    ggplot(aes(x = aphids, y = ants)) +
+    geom_point() +
+    geom_smooth(method = "lm") +
+    facet_wrap(vars(plot), scales = "free_x") # not explicit in question, but appropriate to look for plot effect
+
 #' ## Bonus challenge
 #' Use a [join](https://dplyr.tidyverse.org/reference/mutate-joins.html) function from `dplyr` to find out
 #' how many different models of airplanes were flown out of New York by each airline
@@ -415,3 +445,33 @@ hw_3 <- data.frame(
 #'  
 #' * Hint: install/load `nycflights13` and then look at the `?planes` and `?flights` data 
 #' frames.
+
+#+ bonus_solved_1
+flights %>% glimpse()
+planes %>% glimpse()
+
+#' In the planes data frame, the variable `tailnum` is associated with the airplane `model`. The variable `tailnum`
+#' can join the flights and planes data frames. `Group_by` and `summarize()` are necessary to answer the question. 
+#' Calling `distinct` avoids two separate rounds of `group_by()` and `summarize()`. To reach the answer quickly, 
+#' calling `arrange()` can put the top carrier at the top of the tibble. Alternatively, a second call to `summarize` 
+#' which executes `max()` on the summary variable would work.
+
+#+ bonus_solved_2
+flights %>% 
+    left_join(planes, by = "tailnum") %>% # best practice to specify `by = ` to maintain control over join keys
+    distinct(carrier, model) %>% 
+    group_by(carrier) %>% 
+    summarize(n = n()) %>% ungroup() %>% 
+    arrange(-n)
+
+#+ bonus_solved_3
+flights %>% 
+    left_join(planes, by = "tailnum") %>% 
+    group_by(carrier, model) %>% 
+    summarize(n = n()) %>% ungroup() %>% # this summary is meaningless, which is why I prefer using `distinct()` or maybe `slice()`
+    group_by(carrier) %>% 
+    summarize(n = n()) %>%
+    slice_max(n) %>% 
+    left_join(airlines, by = "carrier") # pretty display
+
+#' Many paths exist to the answer, but they all lead to American Airlines flying the most airplane models out of NYC in 2013.
