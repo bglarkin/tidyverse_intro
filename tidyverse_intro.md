@@ -70,7 +70,7 @@ for (i in 1:length(packages_needed)) {
     ## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
     ## ✓ tibble  3.1.0     ✓ dplyr   1.0.5
     ## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
-    ## ✓ readr   1.4.0     ✓ forcats 0.5.1
+    ## ✓ readr   1.4.0     ✓ forcats 0.5.0
 
     ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
     ## x dplyr::filter() masks stats::filter()
@@ -134,26 +134,26 @@ kable(ex_1)
 
 | plot\_replicate | date                             | measurement\_1 |
 |:----------------|:---------------------------------|---------------:|
-| A\_1            | 2016-06-12                       |              8 |
-| A\_2            | 2016-06-12                       |              7 |
-| A\_3            | 2016-06-12                       |              9 |
-| A\_4            | 2016-06-12                       |              7 |
-| B\_1            | 2016-06-12                       |             12 |
+| A\_1            | 2016-06-12                       |             14 |
+| A\_2            | 2016-06-12                       |             16 |
+| A\_3            | 2016-06-12                       |             10 |
+| A\_4            | 2016-06-12                       |             11 |
+| B\_1            | 2016-06-12                       |              8 |
 | B\_2            | 2016-06-12                       |             16 |
-| B\_3            | 2016-06-12                       |              9 |
-| B\_4            | 2016-06-12                       |             10 |
-| C\_1            | 2016-06-12                       |              6 |
-| C\_2            | 2016-06-12                       |              9 |
-| C\_3            | 2016-06-12                       |              9 |
+| B\_3            | 2016-06-12                       |              4 |
+| B\_4            | 2016-06-12                       |             11 |
+| C\_1            | 2016-06-12                       |              8 |
+| C\_2            | 2016-06-12                       |             11 |
+| C\_3            | 2016-06-12                       |             11 |
 | C\_4            | 2016-06-12                       |             10 |
-| D\_1            | 2016-06-12                       |             10 |
-| D\_2            | 2016-06-12                       |              5 |
-| D\_3            | 2016-06-12                       |             11 |
-| D\_4            | 2016-06-12                       |              7 |
+| D\_1            | 2016-06-12                       |              9 |
+| D\_2            | 2016-06-12                       |              9 |
+| D\_3            | 2016-06-12                       |             15 |
+| D\_4            | 2016-06-12                       |              9 |
 | E\_1            | 2016-06-12                       |             11 |
 | E\_2            | 2016-06-12                       |             12 |
-| E\_3            | 2016-06-12                       |             11 |
-| E\_4            | 2016-06-12, measured after lunch |             13 |
+| E\_3            | 2016-06-12                       |              7 |
+| E\_4            | 2016-06-12, measured after lunch |              7 |
 
 ``` r
 # View(ex_1)
@@ -167,26 +167,26 @@ aggregate(measurement_1 ~ plot_replicate, FUN = mean, data = ex_1)
 ```
 
     ##    plot_replicate measurement_1
-    ## 1             A_1             8
-    ## 2             A_2             7
-    ## 3             A_3             9
-    ## 4             A_4             7
-    ## 5             B_1            12
+    ## 1             A_1            14
+    ## 2             A_2            16
+    ## 3             A_3            10
+    ## 4             A_4            11
+    ## 5             B_1             8
     ## 6             B_2            16
-    ## 7             B_3             9
-    ## 8             B_4            10
-    ## 9             C_1             6
-    ## 10            C_2             9
-    ## 11            C_3             9
+    ## 7             B_3             4
+    ## 8             B_4            11
+    ## 9             C_1             8
+    ## 10            C_2            11
+    ## 11            C_3            11
     ## 12            C_4            10
-    ## 13            D_1            10
-    ## 14            D_2             5
-    ## 15            D_3            11
-    ## 16            D_4             7
+    ## 13            D_1             9
+    ## 14            D_2             9
+    ## 15            D_3            15
+    ## 16            D_4             9
     ## 17            E_1            11
     ## 18            E_2            12
-    ## 19            E_3            11
-    ## 20            E_4            13
+    ## 19            E_3             7
+    ## 20            E_4             7
 
 Guess it’s “back to excel”
 
@@ -202,46 +202,46 @@ kable(ex_2)
 
 | plot | replicate | parameter  | value |
 |:-----|----------:|:-----------|------:|
-| A    |         1 | aphids\_n  |   905 |
-| A    |         1 | height\_cm |   284 |
-| A    |         2 | aphids\_n  |   910 |
-| A    |         2 | height\_cm |   268 |
-| A    |         3 | aphids\_n  |   888 |
-| A    |         3 | height\_cm |   256 |
-| A    |         4 | aphids\_n  |   916 |
-| A    |         4 | height\_cm |   270 |
-| B    |         1 | aphids\_n  |   907 |
-| B    |         1 | height\_cm |   250 |
-| B    |         2 | aphids\_n  |   896 |
-| B    |         2 | height\_cm |   265 |
-| B    |         3 | aphids\_n  |   898 |
-| B    |         3 | height\_cm |   277 |
-| B    |         4 | aphids\_n  |   909 |
-| B    |         4 | height\_cm |   286 |
-| C    |         1 | aphids\_n  |   898 |
-| C    |         1 | height\_cm |   287 |
-| C    |         2 | aphids\_n  |   899 |
-| C    |         2 | height\_cm |   262 |
-| C    |         3 | aphids\_n  |   896 |
-| C    |         3 | height\_cm |   282 |
-| C    |         4 | aphids\_n  |   913 |
-| C    |         4 | height\_cm |   277 |
-| D    |         1 | aphids\_n  |   918 |
-| D    |         1 | height\_cm |   288 |
-| D    |         2 | aphids\_n  |   910 |
-| D    |         2 | height\_cm |   273 |
-| D    |         3 | aphids\_n  |   889 |
-| D    |         3 | height\_cm |   279 |
-| D    |         4 | aphids\_n  |   906 |
-| D    |         4 | height\_cm |   285 |
-| E    |         1 | aphids\_n  |   899 |
-| E    |         1 | height\_cm |   268 |
-| E    |         2 | aphids\_n  |   910 |
-| E    |         2 | height\_cm |   276 |
-| E    |         3 | aphids\_n  |   898 |
-| E    |         3 | height\_cm |   295 |
-| E    |         4 | aphids\_n  |   903 |
-| E    |         4 | height\_cm |   264 |
+| A    |         1 | aphids\_n  |   898 |
+| A    |         1 | height\_cm |   283 |
+| A    |         2 | aphids\_n  |   911 |
+| A    |         2 | height\_cm |   275 |
+| A    |         3 | aphids\_n  |   902 |
+| A    |         3 | height\_cm |   268 |
+| A    |         4 | aphids\_n  |   920 |
+| A    |         4 | height\_cm |   272 |
+| B    |         1 | aphids\_n  |   906 |
+| B    |         1 | height\_cm |   281 |
+| B    |         2 | aphids\_n  |   904 |
+| B    |         2 | height\_cm |   281 |
+| B    |         3 | aphids\_n  |   907 |
+| B    |         3 | height\_cm |   288 |
+| B    |         4 | aphids\_n  |   918 |
+| B    |         4 | height\_cm |   289 |
+| C    |         1 | aphids\_n  |   892 |
+| C    |         1 | height\_cm |   275 |
+| C    |         2 | aphids\_n  |   897 |
+| C    |         2 | height\_cm |   268 |
+| C    |         3 | aphids\_n  |   879 |
+| C    |         3 | height\_cm |   277 |
+| C    |         4 | aphids\_n  |   908 |
+| C    |         4 | height\_cm |   286 |
+| D    |         1 | aphids\_n  |   901 |
+| D    |         1 | height\_cm |   281 |
+| D    |         2 | aphids\_n  |   903 |
+| D    |         2 | height\_cm |   266 |
+| D    |         3 | aphids\_n  |   913 |
+| D    |         3 | height\_cm |   290 |
+| D    |         4 | aphids\_n  |   892 |
+| D    |         4 | height\_cm |   278 |
+| E    |         1 | aphids\_n  |   892 |
+| E    |         1 | height\_cm |   282 |
+| E    |         2 | aphids\_n  |   892 |
+| E    |         2 | height\_cm |   281 |
+| E    |         3 | aphids\_n  |   894 |
+| E    |         3 | height\_cm |   264 |
+| E    |         4 | aphids\_n  |   915 |
+| E    |         4 | height\_cm |   278 |
 
 ``` r
 # View(ex_2)
@@ -1411,26 +1411,26 @@ hw_1 %>%
     ## # A tibble: 20 x 4
     ##    plot  replicate date       measurement_1
     ##    <chr> <chr>     <chr>              <int>
-    ##  1 A     1         2016-06-12            10
-    ##  2 A     2         2016-06-12            11
-    ##  3 A     3         2016-06-12            11
-    ##  4 A     4         2016-06-12             8
-    ##  5 B     1         2016-06-12             9
-    ##  6 B     2         2016-06-12            13
-    ##  7 B     3         2016-06-12             9
-    ##  8 B     4         2016-06-12             9
-    ##  9 C     1         2016-06-12             5
-    ## 10 C     2         2016-06-12            10
-    ## 11 C     3         2016-06-12             9
+    ##  1 A     1         2016-06-12            13
+    ##  2 A     2         2016-06-12             7
+    ##  3 A     3         2016-06-12             8
+    ##  4 A     4         2016-06-12            10
+    ##  5 B     1         2016-06-12            10
+    ##  6 B     2         2016-06-12            10
+    ##  7 B     3         2016-06-12            12
+    ##  8 B     4         2016-06-12            13
+    ##  9 C     1         2016-06-12            15
+    ## 10 C     2         2016-06-12             7
+    ## 11 C     3         2016-06-12            15
     ## 12 C     4         2016-06-12             8
-    ## 13 D     1         2016-06-12             8
-    ## 14 D     2         2016-06-12             7
-    ## 15 D     3         2016-06-12            10
-    ## 16 D     4         2016-06-12            19
+    ## 13 D     1         2016-06-12            10
+    ## 14 D     2         2016-06-12            11
+    ## 15 D     3         2016-06-12            11
+    ## 16 D     4         2016-06-12            12
     ## 17 E     1         2016-06-12             8
-    ## 18 E     2         2016-06-12             6
-    ## 19 E     3         2016-06-12            17
-    ## 20 E     4         2016-06-12            10
+    ## 18 E     2         2016-06-12            14
+    ## 19 E     3         2016-06-12            15
+    ## 20 E     4         2016-06-12             9
 
 ## Are aphids more numerous on taller plants?
 
@@ -1458,7 +1458,7 @@ hw_2 %>%
     ggplot(aes(x = height_cm, y = aphids_n)) +
     geom_point() +
     geom_smooth(method = "lm") +
-    facet_wrap(vars(plot)) #, scales = "free_x") # note use of scales
+    facet_wrap(vars(plot), scales = "free_x") # note use of scales
 ```
 
     ## `geom_smooth()` using formula 'y ~ x'
@@ -1668,7 +1668,7 @@ Two of you made this very compact
 combined.plane.data <- full_join(flights, planes, by = "tailnum")
 combined.plane.data %>% 
     group_by(carrier) %>%
-    summarise(models = length(unique(model))) # `n_distinct()` also works here
+    summarise(models = length(unique(model))) # `n_distinct()` = `length(unique())` also works here
 ```
 
     ## # A tibble: 16 x 2

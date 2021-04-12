@@ -403,7 +403,7 @@ hw_2 %>%
     ggplot(aes(x = height_cm, y = aphids_n)) +
     geom_point() +
     geom_smooth(method = "lm") +
-    facet_wrap(vars(plot)) #, scales = "free_x") # note use of scales
+    facet_wrap(vars(plot), scales = "free_x") # note use of scales
 
 #' ## Tidy vs. messy
 #' 
@@ -504,4 +504,4 @@ flights %>%
 combined.plane.data <- full_join(flights, planes, by = "tailnum")
 combined.plane.data %>% 
     group_by(carrier) %>%
-    summarise(models = length(unique(model))) # `n_distinct()` also works here
+    summarise(models = length(unique(model))) # `n_distinct()` = `length(unique())` also works here
