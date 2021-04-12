@@ -413,6 +413,8 @@ hw_2 %>%
 #' Hint: can you compare ants and aphids with `?geom_boxplot` and with a scatterplot (`?geom_point`) 
 #' using the same configuration of hw_3, or is a transformation necessary to produce both of 
 #' these plots? What does this suggest about independent observations and tidy data?
+#' 
+#' * Using `geom_point()` but still a boxplot format was a common misunderstanding
 #+ hw_3
 hw_3 <- data.frame(
     plot = rep(LETTERS[1:5], each = 8),
@@ -427,7 +429,9 @@ hw_3 %>%
     ggplot() +
     geom_boxplot(aes(x = insects, y = count)) +
     facet_wrap(vars(plot)) # not explicit in question, but appropriate to look for plot effect
-# Data are suitable for analysis as-is if the goal is to compare aphid and ant counts in plots
+#' Data are suitable for analysis as-is if the goal is to compare aphid and ant counts in plots.
+#' You could argue that each row is already an independent observation if you aren't interested
+#' in a relationship between ants and aphids.
 
 #+ hw_3_solved_2
 hw_3 %>% 
@@ -437,6 +441,19 @@ hw_3 %>%
     geom_point() +
     geom_smooth(method = "lm") +
     facet_wrap(vars(plot), scales = "free_x") # not explicit in question, but appropriate to look for plot effect
+
+#' Correlations require pivoting, where each row is an independent observation.
+#'
+#' ### Student example
+#' Using `geom_point()` but still really a boxplot format, was a common misunderstanding
+hw_3 %>% 
+    ggplot() +
+    geom_boxplot(aes(insects, count)) + 
+    facet_wrap(vars(plot)) # Even though the data is not fully tidy, we can easily make boxplots in ggplot
+hw_3 %>% 
+    ggplot() +
+    geom_point(aes(insects, count)) + 
+    facet_wrap(vars(plot)) # Same 
 
 #' ## Bonus challenge
 #' Use a [join](https://dplyr.tidyverse.org/reference/mutate-joins.html) function from `dplyr` to find out
@@ -451,10 +468,14 @@ flights %>% glimpse()
 planes %>% glimpse()
 
 #' In the planes data frame, the variable `tailnum` is associated with the airplane `model`. The variable `tailnum`
-#' can join the flights and planes data frames. `Group_by` and `summarize()` are necessary to answer the question. 
-#' Calling `distinct` avoids two separate rounds of `group_by()` and `summarize()`. To reach the answer quickly, 
-#' calling `arrange()` can put the top carrier at the top of the tibble. Alternatively, a second call to `summarize` 
-#' which executes `max()` on the summary variable would work.
+#' can join the flights and planes data frames. `Group_by` and `summarize()` would typically be used.  
+#' Calling `distinct` avoids two separate rounds of `group_by()` and `summarize()`. Using `n_distinct()` makes things
+#' very compact. To reach the answer quickly, calling `arrange()` can put the top carrier at the top of the tibble. 
+#' Alternatively, a second call to `summarize`, which executes `max()` on the summary variable would work.
+#' 
+#' * Use of other than `left_join()` led some astray (others can work but may get complicated)
+#' * Some attempted to filter the airports or years; ?flights...
+#' * Must join to airplanes df; tailnumbers go with individual planes, not models
 
 #+ bonus_solved_2
 flights %>% 
@@ -475,3 +496,12 @@ flights %>%
     left_join(airlines, by = "carrier") # pretty display
 
 #' Many paths exist to the answer, but they all lead to American Airlines flying the most airplane models out of NYC in 2013.
+#' 
+#' ### Student example
+#' Two of you made this very compact
+#+ erba_solution
+# Grace Erba: very compact, combines tidyverse and traditional tools
+combined.plane.data <- full_join(flights, planes, by = "tailnum")
+combined.plane.data %>% 
+    group_by(carrier) %>%
+    summarise(models = length(unique(model))) # `n_distinct()` also works here
